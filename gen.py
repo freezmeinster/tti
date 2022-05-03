@@ -11,10 +11,7 @@ COLOR = (10, 149,255 )
 
 def calfont(message):
     ln = len(message)
-    if ln < 70:
-        return 130
-    else:
-        return 100
+    return abs(ln - 170)
 
 def genimg(message, fname):
     img = Image.new('RGBA', (width, height))
@@ -24,10 +21,6 @@ def genimg(message, fname):
     imgDraw = ImageDraw.Draw(img)
 
     message = "\n".join(textwrap.wrap(message, width=30))
-
-    textWidth, textHeight = imgDraw.textsize(message, font=font)
-    xText = (width - textWidth) / 2
-    yText = (height - textHeight) / 2
 
     imgDraw.text((width/2, height/2),
             message,font=font,anchor="mm",align='center', fill=COLOR)
